@@ -128,6 +128,14 @@
 };
 
 &mdio {
+	phy5: phy@5 {
+		compatible = "ethernet-phy-ieee802.3-c45";
+		reg = <5>;
+
+		mxl,led-drive-vdd;
+		mxl,led-config = <0x03f0 0x0 0x0 0x0>;
+	};
+
 	phy6: phy@6 {
 		compatible = "ethernet-phy-ieee802.3-c45";
 		reg = <6>;
@@ -301,6 +309,14 @@
 		port@4 {
 			reg = <4>;
 			label = "lan4";
+		};
+
+		port@5 {
+			reg = <5>;
+			label = "lan5";
+			phy-mode = "2500base-x";
+			phy-handle = <&phy5>;
+
 		};
 
 		port@6 {
